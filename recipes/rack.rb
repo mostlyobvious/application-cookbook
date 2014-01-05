@@ -1,5 +1,4 @@
 include_recipe "application::default"
-include_recipe "nginx"
 include_recipe "ruby-build"
 
 # require 'open-uri'
