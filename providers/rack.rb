@@ -4,6 +4,7 @@ action :create do
   configure_user
   configure_group
   configure_directory
+  configure_authorized_keys
   configure_vhost
   configure_logrotate
   configure_ruby
@@ -59,13 +60,6 @@ def configure_deployment
   #   mode 0644
   #   source "deploy.rb.erb"
   #   variables :name => name, :deploy_to => deploy_to, :username => username, :ruby_version => node["ruby"]
-  # end
-end
-
-def configure_authorized_keys
-  # FIXME
-  #   public_keys username do
-  #  home home_dir
   # end
 end
 

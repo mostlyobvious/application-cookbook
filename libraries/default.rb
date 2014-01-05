@@ -40,6 +40,31 @@ module Application
     new_resource.updated_by_last_action(true) if r.updated_by_last_action?
   end
 
+  def configure_authorized_keys
+    directory ssh_dir.to_s do
+      owner application_username
+      group application_username
+      mode  "0700"
+      action :create
+    end
+
+    file ssh_dir.join('authorized_keys').to_s do
+      content authorized_keys.map { |entry| "#{entry.strip}\n" }.join
+      owner application_username
+      group application_username
+      mode  "0600"
+      action :create
+    end
+  end
+
+  def ssh_dir
+    Pathname.new(application_home).join('.ssh')
+  end
+
+  def authorized_keys
+    new_resource.authorized_keys || []
+  end
+
   def application_name
     new_resource.name
   end
