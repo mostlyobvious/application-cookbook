@@ -150,6 +150,18 @@ module Application
     end
   end
 
+  def ssl
+    new_resource.vhost[:ssl]
+  end
+
+  def ssl_certificate
+    ssl and ssl[:certificate]
+  end
+
+  def ssl_key
+    ssl and ssl[:key]
+  end
+
 end
 
 

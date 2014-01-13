@@ -6,6 +6,11 @@ upstream <%= @name %>_srv {
 <% end %>
 server {
   listen 80;
+  <% if @ssl %>
+  listen 443 default ssl<%= " spdy" if @spdy %>;
+  ssl_certificate <%= @ssl[:certificate] %>;
+  ssl_certificate_key <%= @ssl[:key] %>;
+  <% end %>
   server_name <%= @domains %>;
   root        <%= @root %>;
   access_log  <%= @access_log %>;
