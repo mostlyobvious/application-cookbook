@@ -11,5 +11,5 @@ action :create do
 end
 
 def configure_vhost
-  configure_spdy_vhost
+  configure_ssl_vhost
 end
