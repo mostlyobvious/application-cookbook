@@ -43,11 +43,12 @@ def configure_directory
 end
 
 def configure_ruby
+  p = self
   r = ruby(application_name) do
-    version  ruby_version
-    rubygems gem_version
-    home     application_home
-    owner    application_username
+    version  p.ruby_version
+    rubygems p.gem_version
+    home     p.application_home
+    owner    p.application_username
   end
   new_resource.updated_by_last_action(true) if r.updated_by_last_action?
 end
