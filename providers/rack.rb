@@ -43,7 +43,7 @@ def configure_directory
 end
 
 def configure_ruby
-  r = ruby_build(application_name) do
+  r = ruby(application_name) do
     version  ruby_version
     rubygems gem_version
     home     application_home
