@@ -21,11 +21,6 @@ def configure_vhost
   }
 
   if ssl
-    variables[:ssl] = {
-      :certificate => ssl_certificate_path,
-      :key         => ssl_key_path
-    }
-
     ssl_key_path = "/etc/nginx/#{vhost_name}.key"
     file ssl_key_path do
       content ssl_key
@@ -41,6 +36,11 @@ def configure_vhost
       group   "root"
       mode    "644"
     end
+
+    variables[:ssl] = {
+      :certificate => ssl_certificate_path,
+      :key         => ssl_key_path
+    }
   end
 
   r = template "/etc/nginx/sites-available/#{vhost_name}" do
