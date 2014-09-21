@@ -1,5 +1,4 @@
-include_recipe "application::default"
-include_recipe "ruby-build"
+include_recipe "ruby"
 
 # require 'open-uri'
 # # Example application
